@@ -1,24 +1,52 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+1.エンティティの洗い出し
+▼フリマアプリの機能
+* ユーザー新規登録・ログイン/ログアウト機能
+* 商品出品・購入
+* 商品コメント機能（レビュー？）
+* カテゴリー・ブランド機能
+* クレジットカード登録・支払い機能
+* マイページ機能・編集
+* 商品検索機能
 
-Things you may want to cover:
+▼テーブル
+ ● usersテーブル
+・ニックネーム
+・Emailアドレス
+・パスワード
+・本名（全角）
+・本名カナ（全角）
+・生年月日
 
-* Ruby version
+ ● itemsテーブル
+・商品名
+・商品画像
+・値段
+・出品者
+・カテゴリー
+・商品状態
+・配送料の負担先
+・発送元の地域
+・発送日の目安
 
-* System dependencies
+●commentsテーブル
+・text
 
-* Configuration
+ ● purchasesテーブル
+・購入者
+・購入した商品
+・請求金
 
-* Database creation
+●addressesテーブル
+・郵便番号
+・都道府県
+・市町村区
+・番地
+・建物名（null可）
+・電話番号
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+●credit_cardテーブル
+・カード番号
+・カード有効期限
+・セキュリティコード
