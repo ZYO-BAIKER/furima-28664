@@ -10,43 +10,74 @@
 * マイページ機能・編集
 * 商品検索機能
 
-▼テーブル
- ● usersテーブル
-・ニックネーム
-・Emailアドレス
-・パスワード
-・本名（全角）
-・本名カナ（全角）
-・生年月日
+## usersテーブル
+| Column   | Type   | Options     |
+| -------- | ------ | ----------- |
+| nickname | string | null: false |
+| email    | string | null: false |
+| password | string | null: false |
+| name     | string | null: false |
+| name_kana| string | null: false |
+|birth_date| string | null: false |
 
- ● itemsテーブル
-・商品名
-・商品画像
-・値段
-・出品者
-・カテゴリー
-・商品状態
-・配送料の負担先
-・発送元の地域
-・発送日の目安
+### Association
+- has_many :items
 
-●commentsテーブル
-・text
+## itemsテーブル
+| Column           | Type   | Options     |
+| -------- --------| ------ | ----------- |
+| name             | string | null: false |
+| image            | string | null: false |
+| price            | integer| null: false |
+| seller           | string | null: false |
+| category         | string | null: false |
+| conditoin        | string | null: false |
+| postage_payer    | string | null: false |
+| prefecture_seller| integer| null: false |
+| send_date        | string | null: false |
 
- ● purchasesテーブル
-・購入者
-・購入した商品
-・請求金
+### Association
+- belongs_to :users
+- has_many :comments
 
-●addressesテーブル
-・郵便番号
-・都道府県
-・市町村区
-・番地
-・建物名（null可）
-・電話番号
+## commentsテーブル
+| Column           | Type   | Options     |
+| -------- --------| ------ | ----------- |
+| text             | string | null: false |
 
-●credit_cardテーブル
-・カード番号
-・カード有効期限
-・セキュリティコード
+### Association
+- belongs_to :comments
+
+ ## purchasesテーブル
+| Column           | Type   | Options     |
+| -------- --------| ------ | ----------- |
+| buyer            | string | null: false |
+| item             | string | null: false |
+
+### Association
+- belongs_to :items
+- has_one :addresses
+- has_one :credit_cards
+
+## addressesテーブル
+| Column       | Type   | Options     |
+| --------     | ------ | ----------- |
+| post_code    | string | null: false |
+| prefectures  | integer| null: false |
+| city         | string | null: false |
+| house_number | string | null: false |
+| building_name| string |             |
+| phone_number | string | null: false |
+
+### Association
+- belongs_to :purchases
+
+## credit_cardテーブル
+| Column   | Type   | Options     |
+| -------- | ------ | ----------- |
+| nickname | string | null: false |
+| email    | string | null: false |
+| password | string | null: false |
+
+### Association
+- belongs_to :purchases
