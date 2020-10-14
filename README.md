@@ -11,33 +11,37 @@
 * 商品検索機能
 
 ## usersテーブル
-| Column   | Type   | Options     |
-| -------- | ------ | ----------- |
-| nickname | string | null: false |
-| email    | string | null: false |
-| password | string | null: false |
-| name     | string | null: false |
-| name_kana| string | null: false |
-|birth_date| string | null: false |
+| Column             | Type   | Options     |
+| -------- --------  | ------ | ----------- |
+| nickname           | string | null: false | ## null: false＝カラムにnullを許可しない
+| email              | string | null: false |
+| encrypted_password | string | null: false |
+| family_name        | string | null: false |
+| first_name         | string | null: false |
+| family_name_kana   | string | null: false |
+| first_name_kana    | string | null: false |
+| birth_date         | date   | null: false |
 
 ### Association
 - has_many :items
+- has_one :purchase
 
 ## itemsテーブル
 | Column           | Type   | Options     |
 | -------- --------| ------ | ----------- |
 | name             | string | null: false |
-| image            | string | null: false |
+<!-- | image            | string | null: false | --> ##「active_storage」を使用するため、設計の段階から削除
 | price            | integer| null: false |
-| seller           | string | null: false |
-| category         | string | null: false |
-| conditoin        | string | null: false |
-| postage_payer    | string | null: false |
-| prefecture_seller| integer| null: false |
-| send_date        | string | null: false |
+| seller           | references | null: false, foreign_key: true |
+| category_id     | integer| null: false |
+| conditoin_id    | integer | null: false |
+| postage_payer_id | integer| null: false |
+| prefecture_seller_id| integer| null: false |
+| send_date_id     | integer| null: false |
+| description      | text   | null: false |
 
 ### Association
-- belongs_to :users
+- belongs_to :user
 - has_many :comments
 
 ## commentsテーブル
@@ -46,38 +50,41 @@
 | text             | string | null: false |
 
 ### Association
-- belongs_to :comments
+- belongs_to :comment
 
  ## purchasesテーブル
 | Column           | Type   | Options     |
 | -------- --------| ------ | ----------- |
-| buyer            | string | null: false |
-| item             | string | null: false |
+| buyer            | references| null: false, foreign_key: true  |
+| item             | references| null: false, foreign_key: true |
 
 ### Association
-- belongs_to :items
-- has_one :addresses
-- has_one :credit_cards
+- belongs_to :user
+- belongs_to :item
+- has_one :addresse
+<!-- - has_one :credit_card -->
 
 ## addressesテーブル
 | Column       | Type   | Options     |
 | --------     | ------ | ----------- |
 | post_code    | string | null: false |
-| prefectures  | integer| null: false |
+| prefectures_id| integer| null: false|
 | city         | string | null: false |
 | house_number | string | null: false |
 | building_name| string |             |
 | phone_number | string | null: false |
+| purchases    | references | null: false, foreign_key: true |
+
 
 ### Association
-- belongs_to :purchases
+- belongs_to :purchase
 
-## credit_cardテーブル
+<!-- ## credit_cardテーブル カードを登録する際は購入の度に入力するため、このテーブルを用意しない
 | Column   | Type   | Options     |
 | -------- | ------ | ----------- |
 | nickname | string | null: false |
 | email    | string | null: false |
-| password | string | null: false |
+| password | string | null: false | -->
 
 ### Association
-- belongs_to :purchases
+- belongs_to :purchase
