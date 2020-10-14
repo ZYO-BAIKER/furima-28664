@@ -30,9 +30,8 @@
 | Column           | Type   | Options     |
 | -------- --------| ------ | ----------- |
 | name             | string | null: false |
-<!-- | image            | string | null: false | --> ##「active_storage」を使用するため、設計の段階から削除
 | price            | integer| null: false |
-| seller           | references | null: false, foreign_key: true |
+| user            | references | null: false, foreign_key: true |
 | category_id     | integer| null: false |
 | conditoin_id    | integer | null: false |
 | postage_payer_id | integer| null: false |
@@ -55,14 +54,13 @@
  ## purchasesテーブル
 | Column           | Type   | Options     |
 | -------- --------| ------ | ----------- |
-| buyer            | references| null: false, foreign_key: true  |
+| user             | references| null: false, foreign_key: true  |
 | item             | references| null: false, foreign_key: true |
 
 ### Association
 - belongs_to :user
 - belongs_to :item
-- has_one :addresse
-<!-- - has_one :credit_card -->
+- has_one :address
 
 ## addressesテーブル
 | Column       | Type   | Options     |
@@ -74,17 +72,6 @@
 | building_name| string |             |
 | phone_number | string | null: false |
 | purchases    | references | null: false, foreign_key: true |
-
-
-### Association
-- belongs_to :purchase
-
-<!-- ## credit_cardテーブル カードを登録する際は購入の度に入力するため、このテーブルを用意しない
-| Column   | Type   | Options     |
-| -------- | ------ | ----------- |
-| nickname | string | null: false |
-| email    | string | null: false |
-| password | string | null: false | -->
 
 ### Association
 - belongs_to :purchase
