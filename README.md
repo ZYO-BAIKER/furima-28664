@@ -23,7 +23,7 @@
 
 ### Association
 - has_many :items
-- has_many :purchase
+- has_many :purchases
 
 ## itemsテーブル
 | Column           | Type   | Options     |
@@ -40,15 +40,20 @@
 
 ### Association
 - belongs_to :user
+- belongs_to :item
 - has_many :comments
+- has_one :purchase
 
 ## commentsテーブル
 | Column           | Type   | Options     |
 | -------- --------| ------ | ----------- |
 | text             | string | null: false |
+| user            | references | null: false, foreign_key: true |
+| item             | references| null: false, foreign_key: true |
 
 ### Association
 - belongs_to :comment
+- belongs_to :user
 
  ## purchasesテーブル
 | Column           | Type   | Options     |
@@ -70,7 +75,7 @@
 | house_number | string | null: false |
 | building_name| string |             |
 | phone_number | string | null: false |
-| purchases    | references | null: false, foreign_key: true |
+| purchase    | references | null: false, foreign_key: true |
 
 ### Association
 - belongs_to :purchase
