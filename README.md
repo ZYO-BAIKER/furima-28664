@@ -1,5 +1,4 @@
 # README
-
 1.エンティティの洗い出し
 ▼フリマアプリの機能
 * ユーザー新規登録・ログイン/ログアウト機能
@@ -24,7 +23,7 @@
 
 ### Association
 - has_many :items
-- has_one :purchase
+- has_many :purchase
 
 ## itemsテーブル
 | Column           | Type   | Options     |
@@ -35,7 +34,7 @@
 | category_id     | integer| null: false |
 | conditoin_id    | integer | null: false |
 | postage_payer_id | integer| null: false |
-| prefecture_seller_id| integer| null: false |
+| prefectures_id| integer| null: false |
 | send_date_id     | integer| null: false |
 | description      | text   | null: false |
 
