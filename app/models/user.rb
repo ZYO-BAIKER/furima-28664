@@ -9,7 +9,7 @@ class User < ApplicationRecord
   validates :nickname, presence: true, length: { maximum: 40 }
 
   PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i.freeze
-  validates_format_of :password, with: PASSWORD_REGEX, message: 'Include both letters and numbers' 
+  validates_format_of :password, with: PASSWORD_REGEX, message: 'Include both letters and numbers'
 
   with_options presence: true do
     validates :nickname, format: { with: /\A[a-z0-9]+\z/i, message: 'is invalid. Input half-width characters.' }

@@ -42,7 +42,7 @@ RSpec.describe User, type: :model do
       it 'emailに`@`が含まれていないとユーザー登録できない' do
         @user.email = 'sample.com'
         @user.valid?
-        expect(@user.errors.full_messages).to include("Email is invalid")
+        expect(@user.errors.full_messages).to include('Email is invalid')
       end
 
       it 'passwoedが空では登録できない' do
