@@ -12,7 +12,6 @@ class ApplicationController < ActionController::Base
   end
 
   def configure_permitted_parameters
-    added_attrs = [ :nickname, :email, :encrypted_password, :family_name, :first_name, :family_name_kana, :first_name_kana :birth_date ]
-    devise_parameter_sanitizer.permit :sign_up, keys: added_attrs  #sign_up（新規登録の処理）に対して、キーのパラメーターを新たに許可
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:nickname, :family_name, :first_name, :family_name_kana, :first_name_kana, :birth_date]) # sign_up（新規登録の処理）に対して、nicknameキーのパラメーターを新たに許可
   end
 end
