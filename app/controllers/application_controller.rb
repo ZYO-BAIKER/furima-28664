@@ -1,7 +1,6 @@
 class ApplicationController < ActionController::Base
   before_action :basic_auth
   before_action :configure_permitted_parameters, if: :devise_controller? # deviseに関するコントローラーの処理であれば、configure~メソッドを実行
-  # before_action :authenticate_user! # ログインしていない場合はログイン画面に遷移
 
   private
 
