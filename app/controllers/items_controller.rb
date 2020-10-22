@@ -1,9 +1,6 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:new]
 
-  extend ActiveHash::Associations::ActiveRecordExtensions
-  belongs_to_active_hash :category, :description
-
   def index
   end
 
