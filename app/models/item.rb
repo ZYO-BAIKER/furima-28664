@@ -3,11 +3,11 @@ class Item < ApplicationRecord
   belongs_to :user
   has_many :comments
 
-  validates :image, :name, :description, presence: true
+  validates :image, :name, :description, :price, presence: true
 
-  validates :price, presence: true, format: { with: /\A[a-z0-9]+\z/i }
+  validates :price, numericality: { with: /\A[0-9]+\z/, message: 'Half-width number' }
+  validates_inclusion_of :price, in: 300..9999999
 
   validates :send_date_id, :prefecture_seller_id, :postage_payer_id, :condition_id, :category_id,  numericality: { other_than: 1 }
   
-  end
 end
