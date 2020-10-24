@@ -25,30 +25,30 @@ RSpec.describe Item, type: :model do
       @item.valid?
       expect(@item.errors.full_messages).to include("Description can't be blank")
     end
-    it 'categoryが空では保存できないこと' do
-      @item.category_id = nil
+    it 'categoryがid_1では保存できないこと' do
+      @item.category_id = 1
       @item.valid?
-      expect(@item.errors.full_messages).to include('Category is not a number')
+      expect(@item.errors.full_messages).to include('Category must be other than 1')
     end
-    it 'condtionが空では保存できないこと' do
-      @item.condition_id = nil
+    it 'condtionがid_1では保存できないこと' do
+      @item.condition_id = 1
       @item.valid?
-      expect(@item.errors.full_messages).to include('Condition is not a number')
+      expect(@item.errors.full_messages).to include('Condition must be other than 1')
     end
-    it 'postage_payerが空では保存できないこと' do
-      @item.postage_payer_id = nil
+    it 'postage_payerがid_1では保存できないこと' do
+      @item.postage_payer_id = 1
       @item.valid?
-      expect(@item.errors.full_messages).to include('Postage payer is not a number')
+      expect(@item.errors.full_messages).to include('Postage payer must be other than 1')
     end
-    it 'prefecture_sellerが空では保存できないこと' do
-      @item.prefecture_seller_id = nil
+    it 'prefecture_sellerがid_1では保存できないこと' do
+      @item.prefecture_seller_id = 1
       @item.valid?
-      expect(@item.errors.full_messages).to include('Prefecture seller is not a number')
+      expect(@item.errors.full_messages).to include('Prefecture seller must be other than 1')
     end
-    it 'send_dateが空では保存できないこと' do
-      @item.send_date_id = nil
+    it 'send_dateがid_1では保存できないこと' do
+      @item.send_date_id = 1
       @item.valid?
-      expect(@item.errors.full_messages).to include('Send date is not a number')
+      expect(@item.errors.full_messages).to include('Send date must be other than 1')
     end
     it 'priceが空では保存できないこと' do
       @item.price = nil
@@ -60,8 +60,8 @@ RSpec.describe Item, type: :model do
       @item.valid?
       expect(@item.errors.full_messages).to include('Price Half-width number')
     end
-    it 'priceが¥300~¥9,999,999の間でないと保存できないこと' do
-      @item.price = 100
+    it 'priceが上限の10000000以上では保存できないこと' do
+      @item.price = 10_000_000
       @item.valid?
       expect(@item.errors.full_messages).to include('Price is not included in the list')
     end
