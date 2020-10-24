@@ -11,9 +11,9 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
-    if @item.valid?              # メモ　item.rb => validation => false => erros.full_messages working! => 
-       @item.save
-       redirect_to root_path
+    if @item.valid?              # メモ　item.rb => validation => false => erros.full_messages working! =>
+      @item.save
+      redirect_to root_path
     else
       render :new
     end
