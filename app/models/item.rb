@@ -3,6 +3,14 @@ class Item < ApplicationRecord
   belongs_to :user
   has_many :comments
 
+  extend ActiveHash::Associations::ActiveRecordExtensions
+  belongs_to_active_hash :category
+  belongs_to_active_hash :conditoin
+  belongs_to_active_hash :postage_payer
+  belongs_to_active_hash :prefecture_seller
+  belongs_to_active_hash :send_date
+
+
   validates :image, :name, :description, :price, presence: true
 
   validates :price, numericality: { with: /\A[0-9]+\z/, message: 'Half-width number' }
