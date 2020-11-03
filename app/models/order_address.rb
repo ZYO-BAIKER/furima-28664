@@ -2,7 +2,7 @@ class OrderAddress
   include ActiveModel::Model
   attr_accessor :number,:postal_code, :prefecture_id, :city, :house_number, :building_name, :phone_number, :token, :user_id, :item_id
 
-  # validates :token, presence: true
+  validates :token, presence: true
 
 
   with_options presence: true do
