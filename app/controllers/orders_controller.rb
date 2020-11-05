@@ -2,7 +2,14 @@ class OrdersController < ApplicationController
   before_action :set_item, only: [:index, :create]
 
   def index
-    @order_address = OrderAddress.new
+    if user_signed_in? && current_user.id != @item.user_id
+      @order_address = OrderAddress.new
+    elsif  user_signed_in? && current_user.id == @item.user_id
+      redirect_to root_path
+    else
+      @item = Item.new
+      redirect_to new_user_session_path
+    end
   end
 
   def create

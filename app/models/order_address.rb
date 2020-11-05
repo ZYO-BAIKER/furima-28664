@@ -2,10 +2,8 @@ class OrderAddress
   include ActiveModel::Model
   attr_accessor :postal_code, :prefecture_id, :city, :house_number, :building_name, :phone_number, :token, :user_id, :item_id
 
-  validates :token, presence: true
-
   with_options presence: true do
-    validates :postal_code, :city, :house_number, :phone_number
+    validates :postal_code, :city, :house_number, :phone_number, :token, :user_id, :item_id
   end
 
   validates :postal_code, format: { with: /\A[0-9]{3}-[0-9]{4}\z/, message: 'is invalid. Include hyphen(-)' } # 「住所」の郵便番号に関するバリデーション
