@@ -2,11 +2,13 @@ class OrdersController < ApplicationController
   before_action :set_item, only: [:index, :create]
 
   def index
-    if user_signed_in? && current_user.id != @item.user_id
+    if user_signed_in? && current_user.id != @item.user_id # 出品者でないユーザーなら、購入ページに遷移
       @order_address = OrderAddress.new
-    elsif  user_signed_in? && current_user.id == @item.user_id
+    elsif  user_signed_in? # 出品者がURLを直接入力して購入ページに遷移しようとすると、トップページに遷移
       redirect_to root_path
-    else
+    elsif  !@order_address.item.nil? # URLを直接入力して購入済み商品の購入ページへ遷移しようとすると、トップページに遷移する
+      redirect_to root_path
+    else # 未ログインユーザーは購入ページに遷移しようとすると、ログインページに遷移
       @item = Item.new
       redirect_to new_user_session_path
     end
@@ -36,7 +38,7 @@ class OrdersController < ApplicationController
   def pay_item
     Payjp.api_key = ENV['PAYJP_SECRET_KEY'] # PAY.JPテスト秘密鍵
     Payjp::Charge.create(
-      amount: @item.price,        #商品の値段
+      amount: @item.price,        # 商品の値段
       card: order_params[:token], # カードトークン
       currency: 'jpy'             # 通貨の種類（日本円）
     )
