@@ -5,8 +5,11 @@ RSpec.describe OrderAddress, type: :model do
     before do
       @order_address = FactoryBot.build(:order_address)
     end
-
-    it 'すべての値（建物名以外）が正しく入力されていれば保存できること' do
+    it 'すべての値が正しく入力されていれば保存できること' do
+      expect(@order_address).to be_valid
+    end
+    it '建物名が無くても保存できること' do
+      @order_address.building_name = nil
       expect(@order_address).to be_valid
     end
     it 'tokenが空では登録できないこと' do

@@ -26,10 +26,11 @@
         支払金額
       </h1>
       <p class='item-payment-price'>
-      <% if @item.postage_payer.id == 2 %>　<%# 着払い（購入者負担）なら、そのまま値段表示 %>
+      <% shipping = 300 %> <%# 仮送料を300円としておく %>
+      <% if @item.postage_payer.id == 2 %> <%# 着払い（購入者負担）なら、そのまま値段表示 %>
         ¥<%= @item.price %>
       <% else %>
-        ¥<%= @item.price - 300 %> <%# 仮送料を300円としておく %>
+        ¥<%= @item.price - shipping %> <%# 送料込み（出品者負担）なら、商品値段からshipping(送料)を引く %>
       <% end %>
       </p>
     </div>
