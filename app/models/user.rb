@@ -6,6 +6,7 @@ class User < ApplicationRecord
   has_many :items
   has_many :purchases
   has_many :orders
+  has_many :comments, dependent: :destroy # ↑この記載により、userが削除された場合、紐づくコメントも連動して削除される
 
   validates :nickname, presence: true, length: { maximum: 40 }
 

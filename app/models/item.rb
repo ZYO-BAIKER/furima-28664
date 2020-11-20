@@ -1,8 +1,8 @@
 class Item < ApplicationRecord
   has_one_attached :image
   belongs_to :user
-  has_many :comments
   has_one :order
+  has_many :comments, dependent: :destroy # この記載により、商品が削除された場合、紐づくコメントも連動して削除される
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :category
