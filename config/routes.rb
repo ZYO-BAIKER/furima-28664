@@ -4,5 +4,10 @@ Rails.application.routes.draw do
   resources :users, only: [:edit, :update]
   resources :items do
     resources :orders, only: [:index, :create]
+    resources :comments, only:[:create,:update,:destroy] do
+      member do
+        get 'restore'
+      end
+    end
   end
 end
