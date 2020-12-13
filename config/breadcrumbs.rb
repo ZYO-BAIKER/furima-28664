@@ -15,6 +15,11 @@ crumb :orders do |order|
   parent :items
 end
 
+crumb :items do |item|
+  link "検索結果ページ", items_search_path
+  parent :root
+end
+
 # crumb :project_issues do |project|
 #   link "Issues", project_issues_path(project)
 #   parent :project, project
