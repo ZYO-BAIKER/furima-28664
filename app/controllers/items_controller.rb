@@ -4,7 +4,7 @@ class ItemsController < ApplicationController
   before_action :return, only: [:edit]
 
   def index
-    @items = Item.all.order('created_at DESC').includes(:user)
+    @items = Item.order('created_at DESC').includes(:user)
   end
 
   def new
@@ -23,7 +23,7 @@ class ItemsController < ApplicationController
 
   def show
     @comment = Comment.new
-    @comments = @item.comments.includes(:user)
+    @comments = @item.comments.includes(:user).order(id: "DESC")
   end
 
   def edit

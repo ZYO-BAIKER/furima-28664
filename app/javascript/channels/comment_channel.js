@@ -8,13 +8,13 @@ consumer.subscriptions.create("CommentChannel", {
   disconnected() {
     // Called when the subscription has been terminated by the server
   },
-
   received(data) {
-    const html = `<p> <strong>${data.user.nickname} : </strong> ${data.content.text} </p>`;
+    const html = `<p><strong><a href="/users/${data.user.id}"> ${data.user.nickname}</a> :</strong>${data.content.text} </p> `;
     const comments = document.getElementById('comments');
     const newComment = document.getElementById('comment_text');
-    console.log(html)
     comments.insertAdjacentHTML('afterbegin', html);
     newComment.value='';
+    const submit =  document.getElementById("submit-btn")
+    submit.disabled = false
   }
 });
