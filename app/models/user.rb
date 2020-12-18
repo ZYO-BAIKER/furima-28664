@@ -7,7 +7,8 @@ class User < ApplicationRecord
   has_many :purchases
   has_many :orders
   has_many :comments, dependent: :destroy # ↑この記載により、userが削除された場合、紐づくコメントも連動して削除される
-
+  has_many :sns_credentials
+  
   validates :nickname, presence: true, length: { maximum: 40 }
 
   PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i.freeze
