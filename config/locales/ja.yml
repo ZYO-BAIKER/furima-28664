@@ -4,10 +4,10 @@ ja:
       user:
         nickname: ニックネーム
         email: メールアドレス
-        family_name: 苗字(全角)
-        first_name: 名前(全角)
-        family_name_kana: 苗字カナ(全角)
-        first_name_kana: 名前カナ(全角)
+        family_name: 苗字
+        first_name: 名前
+        family_name_kana: 苗字(カナ)
+        first_name_kana: 名前(カナ)
         birth_date: 生年月日
       item:
         name: 商品名
