@@ -4,7 +4,7 @@ class ItemsController < ApplicationController
   before_action :return, only: [:edit]
 
   def index
-    @items = Item.order('created_at DESC').includes(:user)
+    @items = Item.order('created_at ASC').includes(:user)
   end
 
   def new
