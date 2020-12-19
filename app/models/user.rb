@@ -12,11 +12,11 @@ class User < ApplicationRecord
   validates :nickname, presence: true, length: { maximum: 40 }
 
   PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i.freeze
-  validates_format_of :password, with: PASSWORD_REGEX, message: 'Include both letters and numbers'
+  validates_format_of :password, with: PASSWORD_REGEX, message: 'は半角英数字混合で入力して下さい'
 
   with_options presence: true do
-    validates :family_name, :first_name, format: { with: /\A[ぁ-んァ-ン一-龥]/, message: 'is invalid. Input full-width characters.' }
-    validates :family_name_kana, :first_name_kana, format: { with: /\A[ァ-ヶー－]+\z/, message: 'is invalid. Input full-width katakana characters.' }
+    validates :family_name, :first_name, format: { with: /\A[ぁ-んァ-ン一-龥]/, message: 'は全角で入力して下さい' }
+    validates :family_name_kana, :first_name_kana, format: { with: /\A[ァ-ヶー－]+\z/, message: 'は全角カタカナで入力して下さい' }
     validates :birth_date
   end
 
