@@ -10,9 +10,20 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  def create
+    if params[:sns_auth] == 'true'
+      @sns_id = params[:sns_id] # メンターポイント
+      pass = Devise.friendly_token + 'a1'
+      if pass.include?("-")
+        password = pass.remove("-")
+      elsif pass.include?("_")
+        password = pass.remove("_")
+      end
+      params[:user][:password] = password
+      params[:user][:password_confirmation] = password
+    end
+    super
+  end
 
   # GET /resource/edit
   # def edit
