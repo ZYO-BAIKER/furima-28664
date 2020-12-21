@@ -3,11 +3,11 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: [:google_oauth2]
-  has_many :items
+  has_many :items, dependent: :destroy 
   has_many :purchases
   has_many :orders
   has_many :comments, dependent: :destroy # ↑この記載により、userが削除された場合、紐づくコメントも連動して削除される
-  has_many :sns_credentials
+  has_many :sns_credentials, dependent: :destroy 
   
   validates :nickname, presence: true, length: { maximum: 40 }
 
