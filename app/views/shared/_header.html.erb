@@ -1,7 +1,7 @@
 <%# CSS・・・assets/stylesheets/shared/header.css %>
 <header class='top-page-header'>
   <div class='search-bar-contents'>
-    <%= link_to image_tag("furima-logo-color.png", class:"furima-icon")%>
+    <%= link_to image_tag("furima-logo-color.png", class:"furima-icon"), '/' %>
       <%= form_with(url: items_search_path, local: true, method: :get, class: "search-form") do |form| %>
         <%= form.text_field :keyword, placeholder: 'キーワードから探す', class: 'input-box' %>
         <button class="search-button">
@@ -11,20 +11,21 @@
   </div>
   <div class='nav'>
     <ul class='lists-left'>
-      <li><%= link_to 'カテゴリー', "#", class: "category-list" %></li>
-      <li><%= link_to 'ブランド', "#", class: "brand-list" %></li>
+      <li><%= link_to 'カテゴリー', "/", class: "category-list" %></li>
+      <li><%= link_to 'ブランド', "/", class: "brand-list" %></li>
     </ul>
     <ul class='lists-right'>
       <% if user_signed_in? %>
        <div class="user_nav grid-6">
-        <li><%= link_to current_user.nickname, "/users/#{current_user.id}", class: "user-nickname" %> </li>
+        <li><%= link_to current_user.nickname, user_path(current_user.id), class: "user-nickname" %> </li>
         <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "logout"%> </li>
+        <li><%= link_to "フリマ退会", user_registration_path, method: :delete, data: { confirm: "アカウント消しちゃうの？" }, class: "delete" %></li>
        </div>
       <% else %>
        <div class = "gird-6">
         <li><%= link_to 'ログイン', new_user_session_path , class: "login" %></li>
         <li><%= link_to '新規登録', new_user_registration_path, class: "sign-up" %></li>
-        <li><%= link_to 'Googleで登録', user_google_oauth2_omniauth_authorize_path, method: :post%></li>
+        <li><%= link_to 'Googleで新規登録', user_google_oauth2_omniauth_authorize_path, method: :post%></li>
        </div>
       <% end %>
     </ul>
