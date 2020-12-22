@@ -21,7 +21,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
       elsif pass.include?("-")
         password = pass.remove("-")
       end
-      binding.pry
       params[:user][:password] = password
       params[:user][:password_confirmation] = password
     end
