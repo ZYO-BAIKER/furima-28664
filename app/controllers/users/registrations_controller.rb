@@ -14,12 +14,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
     if params[:sns_auth] == 'true'
       @sns_id = params[:sns_id] # メンターポイント
       pass = Devise.friendly_token + 'a1'
-      if pass.include?("-") && pass.include?("_")
-        password = pass.remove("-", "_") 
-      elsif pass.include?("_")
-        password = pass.remove("_")
-      elsif pass.include?("-")
-        password = pass.remove("-")
+      if pass.include?('-') && pass.include?('_')
+        password = pass.remove('-', '_')
+      elsif pass.include?('_')
+        password = pass.remove('_')
+      elsif pass.include?('-')
+        password = pass.remove('-')
       end
       params[:user][:password] = password
       params[:user][:password_confirmation] = password
