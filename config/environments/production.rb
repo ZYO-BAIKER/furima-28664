@@ -15,8 +15,8 @@ Rails.application.configure do
   config.action_controller.perform_caching = true
 
   ActionCable.server.config.disable_request_forgery_protection = true
-  config.action_cable.url = 'ws://Elastic IP/cable'
-  config.action_cable.allowed_request_origins = [ 'http://Elastic IP' ]   
+  config.action_cable.url = 'ws://54.150.212.63/cable'
+  config.action_cable.allowed_request_origins = [ 'http://54.150.212.63/' ]   
   # config.action_cable.allowed_request_origins = [ /http:\/\/.*/ ]
   # Ensures that a master key has been made available in either ENV["RAILS_MASTER_KEY"]
   # or in config/master.key. This key is used to decrypt credentials (and other encrypted files).
