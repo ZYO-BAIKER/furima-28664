@@ -44,6 +44,7 @@
 - has_many :comments
 - has_one :purchase
 
+
 ## commentsテーブル
 | Column           | Type   | Options     |
 | -------- --------| ------ | ----------- |
