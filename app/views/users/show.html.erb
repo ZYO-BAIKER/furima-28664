@@ -1,32 +1,38 @@
 <%= render "shared/header" %>
   <div class='item-contents'>
     <h2 class='title'><%= @nickname %>さんの商品一覧</h2>
-    <ul class='item-lists'>
-     <% @items.each do |item| %>
-      <li class='list'>
-        <%= link_to item_path(item.id) do %>
-        <div class='item-img-content'>
-          <%= image_tag item.image, class: "item-img" %>
-          <% if item.order != nil %>  
-            <div class='sold-out'>
-            <span>Sold Out!!</span>
-           </div>  
-          <% end %>  
-        </div>
-        <div class='item-info'>
-          <h3 class='item-name'>
-            <%= item.name %>
-          </h3>
-          <div class='item-price'>
-            <span><%= item.price %>円<br>(税込み)</span>
-            <div class='star-btn'>
-              <%= image_tag "star.png", class:"star-icon" %>
-              <span class='star-count'>0</span>
-            </div>
-          </div>
-        </div>
+
+    <% unless @items.presence %>
+      
+      <strong><p>※※※ 商品が未登録です ※※※</p></strong>
+    <% end %>
+      <ul class='item-lists'>
+        <% @items.each do |item| %>
+          <li class='list'>
+            <%= link_to item_path(item.id) do %>
+
+              <div class='item-img-content'>
+                <%= image_tag item.image, class: "item-img" %>
+                <% if item.order != nil %>  
+                  <div class='sold-out'>
+                    <span>Sold Out!!</span>
+                  </div>  
+                <% end %>  
+              </div>
+
+              <div class='item-info'>
+                <h3 class='item-name'> <%= item.name %> </h3>
+                <div class='item-price'>
+                  <span><%= item.price %>円<br>(税込み)</span>
+                  <div class='star-btn'>
+                    <%= image_tag "star.png", class:"star-icon" %>
+                    <span class='star-count'>0</span>
+                  </div>
+                </div>
+              </div>
+
+            <% end %>
+          </li>
         <% end %>
-      </li>
-     <% end %>
-    </ul>
+      </ul>
   </div>
