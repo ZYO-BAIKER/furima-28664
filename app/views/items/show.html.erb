@@ -77,9 +77,9 @@
       </div>
     </div>
   </div>
-  <%# /商品の概要 %>
 
   <div class="comment-box">
+
     <% if user_signed_in? %>
       <%= form_with(model: [@item, @comment], local: true) do |form| %>
         <%= form.text_area :text, placeholder: "コメントする", rows: "2" %>
@@ -88,18 +88,26 @@
     <% else %>
       <strong><p>※※※ コメントの投稿には新規登録/ログインが必要です ※※※</p></strong>
     <% end %>
+    
           <h4>＜コメント一覧＞</h4>
-   <div class="comments" id='comments'>
-    <% if @comments %>
-      <% @comments.each do |comment| %>
-       <p>
-         <strong><%= link_to comment.user.nickname, "/users/#{comment.user_id}" %>：</strong>
-         <%= comment.text %>
-       </p>
+    <div class="comments" id='comments'>
+      <% if @comments %>
+        <% @comments.each do |comment| %>
+          <p>
+            <strong><%= link_to comment.user.nickname, "/users/#{comment.user_id}" %>：</strong>
+            
+            <%= comment.text %>
+
+            <% if current_user.id == comment.user_id %>
+              <%= link_to ":削除", "/items/#{@item.id}/comments/#{comment.id}", method: :delete %>
+            <% end %>
+          </p>
+        <% end %>
       <% end %>
-    <% end %>
-   </div>
+    </div>
+  
   </div>
+
   <div class="links">
     <% if @item.previous.present? %>
       <%= link_to "＜ 前の商品", item_path(@item.previous), class: "change-item-btn"%>

@@ -9,7 +9,8 @@ consumer.subscriptions.create("CommentChannel", {
     // Called when the subscription has been terminated by the server
   },
   received(data) {
-    const html = `<p><strong><a href="/users/${data.user.id}"> ${data.user.nickname}</a> :</strong>${data.content.text} </p> `;
+    debugger
+    const html = `<p><strong><a href="/users/${data.user.id}"> ${data.user.nickname}</a> :</strong>${data.comment.text}<a href="/items/${data.item.id}/comments/${data.comment.id}">:削除</a> </p> `;
     const comments = document.getElementById('comments');
     const newComment = document.getElementById('comment_text');
     comments.insertAdjacentHTML('afterbegin', html);

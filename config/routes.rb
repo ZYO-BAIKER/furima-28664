@@ -5,16 +5,15 @@ Rails.application.routes.draw do
   }
   root to: 'items#index'
   get 'items/search'
+ 
   resources :users, only: [:edit, :update, :show]
+
   resources :items do
     collection do
       get 'search'
     end
     resources :orders, only: [:index, :create]
-    resources :comments, only:[:create,:update,:destroy] do
-      member do
-        get 'restore'
-      end
-    end
+    resources :comments, only:[:create,:update,:destroy] 
+
   end
 end
