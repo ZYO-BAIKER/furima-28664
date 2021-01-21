@@ -22,11 +22,4 @@ class Item < ApplicationRecord
     validates :send_date_id, :prefecture_seller_id, :postage_payer_id, :condition_id, :category_id
   end
 
-  def self.search(search)
-    if search != ''
-      Item.where('name LIKE(?)', "%#{search}%")
-    else
-      Item.all
-    end
-  end
 end
