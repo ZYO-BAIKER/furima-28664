@@ -2,9 +2,11 @@ class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
   before_action :set_item, only: [:show, :edit, :update, :destroy]
   before_action :return, only: [:edit]
+  before_action :search_product, only: [:index, :search]
 
   def index
     @items = Item.order('created_at ASC').includes(:user)
+    set_product_column
   end
 
   def new
@@ -48,6 +50,8 @@ class ItemsController < ApplicationController
 
   def search
     @items = Item.search(params[:keyword])
+    @results = @p.result.includes(:user)
+    set_product_column
   end
 
   private
@@ -63,4 +67,14 @@ class ItemsController < ApplicationController
   def return
     redirect_to item_path unless user_signed_in? && current_user.id == @item.user_id
   end
+
+  def search_product
+    @p = Item.ransack(params[:q])
+  end
+
+  def set_product_column
+    @item_category_id = Category.where.not(id: 1)
+    @item_condition_id = Condition.where.not(id: 1)
+  end
+
 end
