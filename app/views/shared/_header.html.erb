@@ -1,19 +1,31 @@
-<%# CSS・・・assets/stylesheets/shared/header.css %>
 <header class='top-page-header'>
   <div class='search-bar-contents'>
     <%= link_to image_tag("furima-logo-color.png", class:"furima-icon"), '/' %>
-      <%= form_with(url: items_search_path, local: true, method: :get, class: "search-form") do |form| %>
-        <%= form.text_field :keyword, placeholder: 'キーワードから探す', class: 'input-box' %>
-        <button class="search-button">
-           <%= image_tag "search.png", class:"search-icon" %>
-        </button>
+
+      <%= search_form_for @p, url: items_search_path do |f| %>
+        <%= f.search_field :name_cont, placeholder: 'キーワードから探す', class: 'input-box' %>
+        <%= f.label :category_id_eq, 'カテゴリー：' %>
+        <%= f.collection_select :category_id_eq, @item_category_id, :id, :name, include_blank: '指定なし'%>
+        <br>
+        <%= f.label :condition_id_eq, '商品状態：' %>
+        <%= f.collection_select :condition_id_eq, @item_condition_id, :id, :name, include_blank: '指定なし'%>
+        <br>
+        <%= f.label :price, '価格：' %>
+        <%= f.radio_button :price_lteq, '' %> 指定なし
+        <%= f.radio_button :price_lteq, '1000' %> 1000円以下
+        <%= f.radio_button :price_lteq, '2500' %> 2500円以下
+        <%= f.radio_button :price_lteq, '5000' %> 5000円以下
+        <br>
+        <%= f.submit '検索' %>
       <% end %>
   </div>
+
   <div class='nav'>
     <ul class='lists-left'>
       <li><%= link_to 'カテゴリー', "/", class: "category-list" %></li>
       <li><%= link_to 'ブランド', "/", class: "brand-list" %></li>
     </ul>
+
     <ul class='lists-right'>
       <% if user_signed_in? %>
        <div class="user_nav grid-6">
@@ -29,5 +41,6 @@
        </div>
       <% end %>
     </ul>
+
   </div>
 </header>
