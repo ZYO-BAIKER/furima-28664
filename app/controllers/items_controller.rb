@@ -2,11 +2,11 @@ class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
   before_action :set_item, only: [:show, :edit, :update, :destroy]
   before_action :return, only: [:edit]
-  before_action :search_product, only: [:index, :search]
+  before_action :search_item, only: [:index,:show, :search]
+  before_action :set_item_column, only: [:index,:show, :search]
 
   def index
     @items = Item.order('created_at ASC').includes(:user)
-    set_product_column
   end
 
   def new
@@ -15,7 +15,7 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
-    if @item.valid?              # メモ item.rb => validation => false => erros.full_messages working! =>
+    if @item.valid?  # メモ item.rb => validation => false => erros.full_messages working! =>
       @item.save
       redirect_to root_path
     else
@@ -51,7 +51,6 @@ class ItemsController < ApplicationController
   def search
     @items = Item.search(params[:keyword])
     @results = @p.result.includes(:user)
-    set_product_column
   end
 
   private
@@ -68,11 +67,11 @@ class ItemsController < ApplicationController
     redirect_to item_path unless user_signed_in? && current_user.id == @item.user_id
   end
 
-  def search_product
+  def search_item
     @p = Item.ransack(params[:q])
   end
 
-  def set_product_column
+  def set_item_column
     @item_category_id = Category.where.not(id: 1)
     @item_condition_id = Condition.where.not(id: 1)
   end
