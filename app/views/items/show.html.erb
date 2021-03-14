@@ -94,12 +94,12 @@
       <% if @comments %>
         <% @comments.each do |comment| %>
           <p>
-            <strong><%= link_to comment.user.nickname, "/users/#{comment.user_id}" %>：</strong>
+            <strong><%= link_to comment.user.nickname, user_path(comment.user_id) %>：</strong>
             
             <%= comment.text %>
 
-            <% if current_user.id == comment.user_id %>
-              <%= link_to ":削除", "/items/#{@item.id}/comments/#{comment.id}", method: :delete %>
+            <% user_signed_in? && if current_user.id == comment.user_id %>
+              <%= link_to ":削除", item_comment_path(comment.item_id,comment.id), method: :delete %>
             <% end %>
           </p>
         <% end %>
