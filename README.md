@@ -111,11 +111,11 @@
 - belongs_to :purchase
 
 ## commentsテーブル
-| Column           | Type       | Options     |
-| -------- --------| ------     | ----------- |
-| text             | string     | null: false |
-| user             | references | null: false, foreign_key: true |
-| item             | references | null: false, foreign_key: true |
+| Column           | Type       | Options     |<br>
+| -------- --------| ------     | ----------- |<br>
+| text             | string     | null: false |<br>
+| user             | references | null: false, foreign_key: true |<br>
+| item             | references | null: false, foreign_key: true |<br>
 
 ### Association
 - belongs_to :comment<br>
