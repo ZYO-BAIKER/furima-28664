@@ -6,22 +6,22 @@
   自身が出品した商品は、編集と削除ができます。他のユーザーが出品した商品は、クレジットカードを用いて購入することができます。
 
 # 本番環境(デプロイ先テストアカウント＆ID)
-  接続先： http://54.150.212.63/
-  認証ID/Pass:  admin / 2222
-  
-  テスト用アカウント:
-      購入者用
-        メールアドレス: s@s.com
-        パスワード: sample2
-      購入用カード情報
-        番号：4242424242424242
-        期限：12/24
-        セキュリティコード：123
-      出品者用
-        メールアドレス名: sample@sample.com
-        パスワード: sample2
-  Githubリポジトリ
-    https://github.com/ZYO-BAIKER/furima-28664
+  接続先： http://54.150.212.63/ <br>
+  認証ID/Pass:  admin / 2222 <br>
+  <br>
+  テスト用アカウント:<br>
+      購入者用<br>
+        メールアドレス: s@s.com<br>
+        パスワード: sample2<br>
+      購入用カード情報<br>
+        番号：4242424242424242<br>
+        期限：12/24<br>
+        セキュリティコード：123<br>
+      出品者用<br>
+        メールアドレス名: sample@sample.com<br>
+        パスワード: sample2<br>
+  Githubリポジトリ<br>
+    https://github.com/ZYO-BAIKER/furima-28664<br>
 
 
 # 制作背景(意図)
@@ -31,25 +31,25 @@
   https://gyazo.com/c19362122efd261422be8b25b427ce4b
   
 # 工夫したポイント
-  コメント機能の使い易くするために、Action Cableを用いて、コメント投稿を非同期通信にしたことです。
-  画面がリロードされることなく、快適な操作ができるように意識しました。
-  また、このメッセージと共に投稿者名も表示され、投稿者のユーザーページへのリンクも付与しました。
+  コメント機能の使い易くするために、Action Cableを用いて、コメント投稿を非同期通信にしたことです。<br>
+  画面がリロードされることなく、快適な操作ができるように意識しました。<br>
+  また、このメッセージと共に投稿者名も表示され、投稿者のユーザーページへのリンクも付与しました。<br>
   そして、投稿者本人なら投稿内容を削除できるようにしました。
 
 # 使用技術(開発環境)
   Ruby / Ruby on Rails / MySQL / GitHub / Heroku / Visual Studio Code / Trello/Java script
 
 # 課題や今後実装したい機能
-  Action Cableでコメント投稿後、削除ボタンも一緒に出現する。
-  しかし、現状だと削除ボタンを押すとNo routes Errorになってしまう。
-  一度、リロードすれば問題なく削除できるので、この部分をなんとか修正したいです。
+  Action Cableでコメント投稿後、削除ボタンも一緒に出現する。<br>
+  しかし、現状だと削除ボタンを押すとNo routes Errorになってしまう。<br>
+  一度、リロードすれば問題なく削除できるので、この部分をなんとか修正したいです。<br>
 
 # DB設計
 
 ## usersテーブル
-| Column             | Type   | Options     |
-| -------- --------  | ------ | ----------- |
-| nickname           | string | null: false | ## null: false＝カラムにnullを許可しない
+| Column             | Type   | Options     |<br>
+| -------- --------  | ------ | ----------- |<br>
+| nickname           | string | null: false |<br>
 | email              | string | null: false |
 | encrypted_password | string | null: false |
 | family_name        | string | null: false |
