@@ -6,25 +6,25 @@
   自身が出品した商品は、編集と削除ができます。他のユーザーが出品した商品は、クレジットカードを用いて購入することができます。
 
 # 本番環境(デプロイ先テストアカウント＆ID)
-  ## ○接続先： http://54.150.212.63/ <br>
-  ## ○認証ID/Pass:  admin / 2222 <br>
+  ### ○接続先： http://54.150.212.63/ <br>
+  ### ○認証ID/Pass:  admin / 2222 <br>
   <br>
-  ## ○テスト用アカウント:<br>
-      ・購入者用<br>
-        メールアドレス: s@s.com<br>
-        パスワード: sample2<br>
-        <br>
-      ・購入用カード情報<br>
-        番号：4242424242424242<br>
-        期限：12/24<br>
-        セキュリティコード：123<br>
-        <br>
-      ・出品者用<br>
-        メールアドレス名: sample@sample.com<br>
-        パスワード: sample2<br>
-        <br>
- ## ○Githubリポジトリ<br>
-    https://github.com/ZYO-BAIKER/furima-28664<br>
+  ### ○テスト用アカウント:<br>
+       ・購入者用<br>
+         メールアドレス: s@s.com<br>
+         パスワード: sample2<br>
+         <br>
+       ・購入用カード情報<br>
+         番号：4242424242424242<br>
+         期限：12/24<br>
+         セキュリティコード：123<br>
+         <br>
+       ・出品者用<br>
+         メールアドレス名: sample@sample.com<br>
+         パスワード: sample2<br>
+         <br>
+ ### ○Githubリポジトリ<br>
+      https://github.com/ZYO-BAIKER/furima-28664 <br>
 
 
 # 制作背景(意図)
