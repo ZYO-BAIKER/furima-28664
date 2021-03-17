@@ -6,8 +6,8 @@
   自身が出品した商品は、編集と削除ができます。他のユーザーが出品した商品は、クレジットカードを用いて購入することができます。
 
 # 本番環境(デプロイ先テストアカウント＆ID)
-  ○接続先： http://54.150.212.63/ <br>
-  ○認証ID/Pass:  admin / 2222 <br>
+  ## ○接続先： http://54.150.212.63/ <br>
+  ## ○認証ID/Pass:  admin / 2222 <br>
   <br>
   ## ○テスト用アカウント:<br>
       ・購入者用<br>
@@ -30,7 +30,7 @@
 # 制作背景(意図)
   これまで、学んできた内容の総復習として、作成する経験とスキルの定着のために挑戦しました。
 
-# DEMO(gifで動画や写真を貼って、ビューのイメージを掴んでもらいます)
+# DEMO
   https://gyazo.com/c19362122efd261422be8b25b427ce4b
   
 # 工夫したポイント
@@ -97,14 +97,14 @@
 - has_one :address<br>
 
 ## addressesテーブル
-| Column        | Type   | Options     |<br>
-| -------- -----| ------ | ----------- |<br>
-| post_code     | string | null: false |<br>
-| prefectures_id| integer| null: false |<br>
-| city          | string | null: false |<br>
-| house_number  | string | null: false |<br>
-| building_name | string |             |<br>
-| phone_number  | string | null: false |<br>
+| Column        | Type       | Options     |<br>
+| --------------| ---------- | ----------- |<br>
+| post_code     | string     | null: false |<br>
+| prefectures_id| integer    | null: false |<br>
+| city          | string     | null: false |<br>
+| house_number  | string     | null: false |<br>
+| building_name | string     |             |<br>
+| phone_number  | string     | null: false |<br>
 | purchase      | references | null: false, foreign_key: true |<br>
 
 ### Association
@@ -112,7 +112,7 @@
 
 ## commentsテーブル
 | Column           | Type       | Options     |<br>
-| -------- --------| ------     | ----------- |<br>
+| -----------------| -----------| ----------- |<br>
 | text             | string     | null: false |<br>
 | user             | references | null: false, foreign_key: true |<br>
 | item             | references | null: false, foreign_key: true |<br>
