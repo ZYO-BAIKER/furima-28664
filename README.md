@@ -50,16 +50,16 @@
 # DB設計
 
 ## usersテーブル
-| Column             | Type   | Options     |<br>
-| -------- --------  | ------ | ----------- |<br>
-| nickname           | string | null: false |<br>
-| email              | string | null: false |<br>
-| encrypted_password | string | null: false |<br>
-| family_name        | string | null: false |<br>
-| first_name         | string | null: false |<br>
-| family_name_kana   | string | null: false |<br>
-| first_name_kana    | string | null: false |<br>
-| birth_date         | date   | null: false |<br>
+| Column             | Type   | Options     |
+|--------------------|--------| ------------|
+| nickname           | string | null: false |
+| email              | string | null: false |
+| encrypted_password | string | null: false |
+| family_name        | string | null: false |
+| first_name         | string | null: false |
+| family_name_kana   | string | null: false |
+| first_name_kana    | string | null: false |
+| birth_date         | date   | null: false |
 
 ### Association
 - has_many :items<br>
@@ -67,66 +67,66 @@
 - has_many :sns_credentials<br>
 
 ## itemsテーブル
-| Column           | Type       | Options     |<br>
-| -------- --------| ------ ----| ----------- |<br>
-| name             | string     | null: false |<br>
-| price            | integer    | null: false |<br>
-| user             | references | null: false, foreign_key: true |<br>
-| category_id      | integer    | null: false |<br>
-| conditoin_id     | integer    | null: false |<br>
-| postage_payer_id | integer    | null: false |<br>
-| prefectures_id   | integer    | null: false |<br>
-| send_date_id     | integer    | null: false |<br>
-| description      | text       | null: false |<br>
+| Column           | Type       | Options     |
+|------------------|------------|-------------|
+| name             | string     | null: false |
+| price            | integer    | null: false |
+| user             | references | null: false, foreign_key: true |
+| category_id      | integer    | null: false |
+| conditoin_id     | integer    | null: false |
+| postage_payer_id | integer    | null: false |
+| prefectures_id   | integer    | null: false |
+| send_date_id     | integer    | null: false |
+| description      | text       | null: false |
 
 ### Association
-- belongs_to :user<br>
-- belongs_to :item<br>
-- has_many :comments<br>
-- has_one :purchase<br>
+- belongs_to :user
+- belongs_to :item
+- has_many :comments
+- has_one :purchase
 
  ## purchasesテーブル
-| Column           | Type      | Options                        |<br>
-| -------- --------| ------ ---| -------------------------------|<br>
-| user             | references| null: false, foreign_key: true |<br>
-| item             | references| null: false, foreign_key: true |<br>
+| Column           | Type      | Options                        |
+|------------------|-----------|--------------------------------|
+| user             | references| null: false, foreign_key: true |
+| item             | references| null: false, foreign_key: true |
 
 ### Association
-- belongs_to :user<br>
-- belongs_to :item<br>
-- has_one :address<br>
+- belongs_to :user
+- belongs_to :item
+- has_one :address
 
 ## addressesテーブル
-| Column        | Type       | Options     |<br>
-| --------------| ---------- | ----------- |<br>
-| post_code     | string     | null: false |<br>
-| prefectures_id| integer    | null: false |<br>
-| city          | string     | null: false |<br>
-| house_number  | string     | null: false |<br>
-| building_name | string     |             |<br>
-| phone_number  | string     | null: false |<br>
-| purchase      | references | null: false, foreign_key: true |<br>
+| Column        | Type       | Options     |
+|---------------|----------- |-------------|
+| post_code     | string     | null: false |
+| prefectures_id| integer    | null: false |
+| city          | string     | null: false |
+| house_number  | string     | null: false |
+| building_name | string     |             |
+| phone_number  | string     | null: false |
+| purchase      | references | null: false, foreign_key: true |
 
 ### Association
 - belongs_to :purchase
 
 ## commentsテーブル
-| Column           | Type       | Options     |<br>
-| -----------------| -----------| ----------- |<br>
-| text             | string     | null: false |<br>
-| user             | references | null: false, foreign_key: true |<br>
-| item             | references | null: false, foreign_key: true |<br>
+| Column           | Type       | Options     |
+|------------------|------------|-------------|
+| text             | string     | null: false |
+| user             | references | null: false, foreign_key: true |
+| item             | references | null: false, foreign_key: true |
 
 ### Association
 - belongs_to :comment<br>
 - belongs_to :user<br>
 
 ## snsCredentialテーブル
-| Column   |    Type    | Options                        |<br>
-|----------|------------| ------------------------------ |<br>
-| provider | string     | null: false                    |<br>
-| uid      | string     | null: false, foreign_key: true |<br>
-| user     | references | null: false, foreign_key: true |<br>
+| Column   |    Type    | Options                        |
+|----------|------------|--------------------------------|
+| provider | string     | null: false                    |
+| uid      | string     | null: false, foreign_key: true |
+| user     | references | null: false, foreign_key: true |
 
 ### Association
 - belongs_to :user
