@@ -40,7 +40,7 @@
   そして、投稿者本人なら投稿内容を削除できるようにしました。
 
 # 使用技術(開発環境)
-  Ruby / Ruby on Rails / MySQL / GitHub / Heroku / Visual Studio Code / Trello/Java script
+  Ruby / Ruby on Rails / MySQL / GitHub / Heroku / Visual Studio Code / Trello/Java script / AWS
 
 # 課題や今後実装したい機能
   Action Cableでコメント投稿後、削除ボタンも一緒に出現する。<br>
